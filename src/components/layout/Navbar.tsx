@@ -157,27 +157,43 @@ export default function Navbar() {
               )}
             </Link>
 
-            {/* Profile Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-                className="flex items-center gap-2 p-1.5 pl-2.5 pr-2 rounded-full border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all bg-white"
-              >
-                <div className="text-left hidden md:block">
-                  <div className="text-xs font-bold text-slate-800 leading-tight">
-                    {currentUser.name}
+            {/* Profile Dropdown or Auth Links */}
+            {currentUser.id.startsWith('0000') ? (
+              <div className="flex items-center gap-3">
+                <Link
+                  href="/login"
+                  className="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors"
+                >
+                  Log In
+                </Link>
+                <Link
+                  href="/signup"
+                  className="px-4 py-2 bg-blue-600 text-white text-sm font-bold rounded-xl hover:bg-blue-700 shadow-md shadow-blue-500/20 transition-all"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            ) : (
+              <div className="relative">
+                <button
+                  onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
+                  className="flex items-center gap-2 p-1.5 pl-2.5 pr-2 rounded-full border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all bg-white"
+                >
+                  <div className="text-left hidden md:block">
+                    <div className="text-xs font-bold text-slate-800 leading-tight">
+                      {currentUser.name}
+                    </div>
+                    <div className="text-[10px] font-medium text-slate-500 capitalize">
+                      {userRole} Mode
+                    </div>
                   </div>
-                  <div className="text-[10px] font-medium text-slate-500 capitalize">
-                    {userRole} Mode
-                  </div>
-                </div>
-                <img
-                  src={currentUser.avatar}
-                  alt={currentUser.name}
-                  className="w-8 h-8 rounded-full object-cover border border-slate-200"
-                />
-                <ChevronDown className="w-4 h-4 text-slate-400" />
-              </button>
+                  <img
+                    src={currentUser.avatar}
+                    alt={currentUser.name}
+                    className="w-8 h-8 rounded-full object-cover border border-slate-200"
+                  />
+                  <ChevronDown className="w-4 h-4 text-slate-400" />
+                </button>
 
               {/* Dropdown Menu */}
               {profileDropdownOpen && (
@@ -269,6 +285,7 @@ export default function Navbar() {
                 </div>
               )}
             </div>
+            )}
 
             {/* Mobile menu hamburger */}
             <button

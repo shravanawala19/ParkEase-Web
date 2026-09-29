@@ -48,29 +48,6 @@ export default function LoginPage() {
           </div>
 
           <div className="p-8">
-            {/* Demo presets */}
-            <div className="mb-6 p-3.5 bg-blue-50 border border-blue-200/80 rounded-2xl">
-              <span className="text-xs font-bold text-blue-900 block mb-2 flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                1-Click Demo Login
-              </span>
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  type="button"
-                  onClick={() => handleDemo('renter')}
-                  className="py-2 px-3 bg-white border border-blue-200 text-blue-900 text-xs font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all shadow-sm"
-                >
-                  🚗 As Renter (Alex)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleDemo('host')}
-                  className="py-2 px-3 bg-white border border-blue-200 text-blue-900 text-xs font-semibold rounded-xl hover:bg-indigo-600 hover:text-white transition-all shadow-sm"
-                >
-                  🏠 As Host (Marcus)
-                </button>
-              </div>
-            </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
