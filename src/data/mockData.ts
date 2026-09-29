@@ -1,4 +1,4 @@
-import { ParkingSpot, Booking } from '@/types/parking';
+import { ParkingSpot, Booking , SpotType} from '@/types/parking';
 
 export const POPULAR_AMENITIES = [
   { id: 'ev_charging', name: 'EV Charging (Level 2)', icon: 'Zap' },
