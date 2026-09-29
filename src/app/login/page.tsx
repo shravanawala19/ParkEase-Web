@@ -7,20 +7,14 @@ import { useApp } from '@/context/AppContext';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ToastContainer from '@/components/common/Toast';
-import { Car, Mail, Lock, Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Car, Mail, Lock, ArrowRight } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
-  const { setUserRole, showToast, signInWithSupabase, isSupabaseConnected } = useApp();
+  const { signInWithSupabase, showToast } = useApp();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleDemo = (role: 'renter' | 'host') => {
-    setUserRole(role);
-    showToast(`Signed in as Demo ${role === 'renter' ? 'Renter' : 'Host'}`, undefined, 'success');
-    router.push(role === 'host' ? '/dashboard/owner' : '/dashboard/renter');
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,7 +42,6 @@ export default function LoginPage() {
           </div>
 
           <div className="p-8">
-
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
@@ -95,17 +88,16 @@ export default function LoginPage() {
                     <span>Signing In...</span>
                   </>
                 ) : (
-                  <span>Sign In</span>
+                  <>
+                    <span>Sign In</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </>
                 )}
               </button>
-              <div className="flex items-center justify-center gap-2 pt-2 text-[11px] text-slate-400">
-                <span className={`w-2 h-2 rounded-full ${isSupabaseConnected ? 'bg-emerald-500' : 'bg-amber-400'}`} />
-                <span>{isSupabaseConnected ? 'Supabase Database Connected' : 'Demo Simulation Mode'}</span>
-              </div>
             </form>
 
             <p className="text-center text-xs text-slate-500 mt-6">
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
               <Link href="/signup" className="text-blue-600 font-bold hover:underline">
                 Create one now
               </Link>

@@ -22,7 +22,6 @@ import {
   Sparkles,
   Database,
 } from 'lucide-react';
-import BackendStatusModal from '@/components/common/BackendStatusModal';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -40,7 +39,7 @@ export default function Navbar() {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
-  const [statusModalOpen, setStatusModalOpen] = useState(false);
+
 
   const isHost = userRole === 'host';
 
@@ -105,19 +104,7 @@ export default function Navbar() {
 
           {/* Right Action Bar */}
           <div className="flex items-center gap-3">
-            {/* Backend Connectivity Status Button */}
-            <button
-              onClick={() => setStatusModalOpen(true)}
-              title="Click to check Supabase & Stripe status"
-              className={`hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-semibold transition-all shadow-sm ${
-                isSupabaseConnected
-                  ? 'bg-emerald-50 border-emerald-200 text-emerald-800 hover:bg-emerald-100'
-                  : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
-              }`}
-            >
-              <Database className={`w-3.5 h-3.5 ${isSupabaseConnected ? 'text-emerald-600' : 'text-blue-500'}`} />
-              <span>{isSupabaseConnected ? 'Supabase Live' : 'Backend Status'}</span>
-            </button>
+
 
             {/* Quick Role Switcher Pill */}
             <button
@@ -236,18 +223,7 @@ export default function Navbar() {
                       <span>Saved Favorites ({wishlist.length})</span>
                     </Link>
 
-                    <button
-                      onClick={() => setStatusModalOpen(true)}
-                      className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 transition-colors text-left"
-                    >
-                      <div className="flex items-center gap-2.5">
-                        <Database className="w-4 h-4 text-blue-600" />
-                        <span>Supabase & Stripe Status</span>
-                      </div>
-                      <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${isSupabaseConnected ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'}`}>
-                        {isSupabaseConnected ? 'Live' : 'Demo'}
-                      </span>
-                    </button>
+
                   </div>
 
                   <div className="border-t border-slate-100 py-1">
@@ -351,17 +327,12 @@ export default function Navbar() {
               className="w-full text-left px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-800 hover:bg-blue-50 flex items-center gap-3"
             >
               <User className="w-5 h-5 text-slate-500" />
-              <span>Sign In / Demo Login</span>
+              <span>Sign In</span>
             </button>
           </div>
         </div>
       )}
 
-      {/* Backend Status Modal */}
-      <BackendStatusModal
-        isOpen={statusModalOpen}
-        onClose={() => setStatusModalOpen(false)}
-      />
     </header>
   );
 }

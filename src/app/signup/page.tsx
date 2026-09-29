@@ -144,10 +144,7 @@ export default function SignupPage() {
                   <span>Create Free Account</span>
                 )}
               </button>
-              <div className="flex items-center justify-center gap-2 pt-2 text-[11px] text-slate-400">
-                <span className={`w-2 h-2 rounded-full ${isSupabaseConnected ? 'bg-emerald-500' : 'bg-amber-400'}`} />
-                <span>{isSupabaseConnected ? 'Supabase Database Active' : 'Demo Simulation Mode'}</span>
-              </div>
+
             </form>
 
             <p className="text-center text-xs text-slate-500 mt-6">
